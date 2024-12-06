@@ -20,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Debug.Log($"OnGround: {_onGround}");
         var moveDelta = MoveAcceleration * Time.deltaTime;
         moveDelta *= _onGround ? 1f : 0.1f;
         MoveAlongAxis(KeyCode.W, KeyCode.S, transform.forward, moveDelta);
@@ -33,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
-        _onGround = CollidedWithGround(other);
+        if (CollidedWithGround(other))
+            _onGround = true;
     }
 
     private bool MoveAlongAxis(KeyCode forwardKey, KeyCode? backwardKey, Vector3 moveDirection, float moveDelta)
