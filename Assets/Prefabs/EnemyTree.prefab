@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 349191037812555047}
   - component: {fileID: 3754098987157912257}
   - component: {fileID: 1935529991304566123}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,6 +141,9 @@ MonoBehaviour:
   MoveSpeed: 2
   DirectionChangeInterval: 3
   MaxWanderRadius: 10
+  SeedPrefab: {fileID: 6717595789439390266, guid: 778fe726b91784f4b8eb03655ad459cf, type: 3}
+  FireInterval: 2
+  SeedVelocity: 50
 --- !u!136 &3754098987157912257
 CapsuleCollider:
   m_ObjectHideFlags: 0

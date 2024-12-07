@@ -39,18 +39,13 @@ public class Seed : MonoBehaviour
   /// <param name="other"></param>
   void OnCollisionEnter(Collision other)
   {
-    // collide with tree, do nothing
-    if (other.gameObject.TryGetComponent<TreeBase>(out _))
-    {
-      return;
-    }
     // collide with player, subtract 1 life
-    else if (other.gameObject.TryGetComponent<TreeBase>(out _))
+    if (other.gameObject.TryGetComponent<Player>(out _))
     {
-      ScoreManager.AddToScore(-1);
-      Destroy(other.gameObject);
+      LivesManager.AddToLives(-1);
       Destroy(gameObject);
     }
+    // disappear
     else
     {
       Destroy(gameObject);

@@ -6,7 +6,7 @@ public class TreeManager : MonoBehaviour
     public GameObject StationaryTreePrefab;
     public GameObject EnemyTreePrefab;
     public int StationaryTreeCount = 5;
-    public int EnemyTreeCount = 3;
+    public int EnemyTreeCount = 0;
     public Vector3 SpawnAreaSize = new Vector3(20, 0, 20);
     public float MinSpawnDistanceFromPlayer = 5f;
 
