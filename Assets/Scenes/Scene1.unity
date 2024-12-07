@@ -324,12 +324,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44fdb6bb2d5e0484c9ce8f817fa3192b, type: 3}
---- !u!1 &300973357 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 535710282529548282, guid: ed69a61a24f7e449f8b2ca475f40688a,
-    type: 3}
-  m_PrefabInstance: {fileID: 641925289914099779}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &302670615
 GameObject:
   m_ObjectHideFlags: 0
@@ -2458,7 +2452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3da8309719d46d1a9a58a0d484a34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StationaryTreePrefab: {fileID: 300973357}
+  StationaryTreePrefab: {fileID: 0}
   EnemyTreePrefab: {fileID: 2045845191}
   StationaryTreeCount: 0
   EnemyTreeCount: 0
@@ -2547,7 +2541,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed69a61a24f7e449f8b2ca475f40688a, type: 3}
---- !u!1001 &641925289914099779
+--- !u!1001 &2097366575
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2563,17 +2557,17 @@ PrefabInstance:
     - target: {fileID: 535710282529775790, guid: ed69a61a24f7e449f8b2ca475f40688a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 22.563335
       objectReference: {fileID: 0}
     - target: {fileID: 535710282529775790, guid: ed69a61a24f7e449f8b2ca475f40688a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0000019073486
       objectReference: {fileID: 0}
     - target: {fileID: 535710282529775790, guid: ed69a61a24f7e449f8b2ca475f40688a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.49
+      value: -9.381916
       objectReference: {fileID: 0}
     - target: {fileID: 535710282529775790, guid: ed69a61a24f7e449f8b2ca475f40688a,
         type: 3}
@@ -2623,7 +2617,6 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 302670619}
   - {fileID: 2011721860}
-  - {fileID: 641925289914099779}
   - {fileID: 2058468576}
   - {fileID: 1280075286}
   - {fileID: 1119492520}
@@ -2641,3 +2634,4 @@ SceneRoots:
   - {fileID: 801639460}
   - {fileID: 2055117813}
   - {fileID: 212335643}
+  - {fileID: 2097366575}
