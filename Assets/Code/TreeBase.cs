@@ -24,13 +24,11 @@ public abstract class TreeBase : MonoBehaviour
             return;
 
         float distanceToPlayer = Vector3.Distance(transform.position, _player.position);
-        Debug.Log($"Distance to Player: {distanceToPlayer}");
 
         if (distanceToPlayer <= SoundProximityRadius)
         {
             if (!_audioSource.isPlaying)
             {
-                Debug.Log("Playing sound for tree.");
                 _audioSource.Play();
             }
         }
@@ -38,7 +36,6 @@ public abstract class TreeBase : MonoBehaviour
         {
             if (_audioSource.isPlaying)
             {
-                Debug.Log("Stopping sound for tree.");
                 _audioSource.Stop();
             }
         }

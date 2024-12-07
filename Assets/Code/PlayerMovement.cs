@@ -11,12 +11,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rb;
 
     public float SpeedMultiplier = 2f;
-    public float PowerUpDuration = 5f; 
+    private float _originalMaxSpeed = 1f;
 
     // Start is called before the first frame update
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _originalMaxSpeed = MaxLinearVelocity;
         _rb.maxLinearVelocity = MaxLinearVelocity;
     }
 
@@ -31,19 +32,6 @@ public class PlayerMovement : MonoBehaviour
         var jumpDelta = JumpAcceleration * Time.deltaTime;
         if (_onGround && MoveAlongAxis(KeyCode.Space, null, transform.up, jumpDelta))
             _onGround = false;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            var playerMovement = other.GetComponent<PlayerMovement>();
-            if (playerMovement != null)
-            {
-                playerMovement.ActivateSpeedPowerUp(SpeedMultiplier, PowerUpDuration);
-                Destroy(gameObject);
-            }
-        }
     }
 
     private void OnCollisionStay(Collision other)
@@ -68,5 +56,18 @@ public class PlayerMovement : MonoBehaviour
     private bool CollidedWithGround(Collision other)
     {
         return other.gameObject.TryGetComponent<Ground>(out var groundComponent);
+    }
+
+    public void ActivateSpeedPowerUp(float multiplier, float duration)
+    {
+        MaxLinearVelocity *= multiplier;
+        _rb.maxLinearVelocity = MaxLinearVelocity;
+        Invoke(nameof(ResetSpeed), duration);
+    }
+
+    private void ResetSpeed()
+    {
+        MaxLinearVelocity = _originalMaxSpeed; 
+        _rb.maxLinearVelocity = MaxLinearVelocity;
     }
 }
