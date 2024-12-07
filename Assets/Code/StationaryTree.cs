@@ -8,4 +8,8 @@ public class StationaryTree : TreeBase
     {
         // nothing for now, just need to decrement score
     }
+
+    private new void Update() {
+        base.Update();
+    }
 }

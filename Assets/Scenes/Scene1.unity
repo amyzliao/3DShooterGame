@@ -2349,7 +2349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 535710282529775790, guid: ed69a61a24f7e449f8b2ca475f40688a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.21
+      value: 12.49
       objectReference: {fileID: 0}
     - target: {fileID: 535710282529775790, guid: ed69a61a24f7e449f8b2ca475f40688a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2392,13 +2392,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1935529991304566123, guid: 44fdb6bb2d5e0484c9ce8f817fa3192b, type: 3}
+      propertyPath: Priority
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 8288899888817687112, guid: 44fdb6bb2d5e0484c9ce8f817fa3192b, type: 3}
       propertyPath: m_Name
       value: EnemyTree
       objectReference: {fileID: 0}
     - target: {fileID: 8288899888817917212, guid: 44fdb6bb2d5e0484c9ce8f817fa3192b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.41
+      value: 10.94
       objectReference: {fileID: 0}
     - target: {fileID: 8288899888817917212, guid: 44fdb6bb2d5e0484c9ce8f817fa3192b, type: 3}
       propertyPath: m_LocalPosition.y

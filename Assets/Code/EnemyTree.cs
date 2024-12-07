@@ -17,6 +17,12 @@ public class EnemyTree : TreeBase
         StartCoroutine(ChangeDirectionRoutine());
     }
 
+    private new void Update()
+    {
+        base.Update();
+        UpdateBehavior();
+    }
+
     public override void UpdateBehavior()
     {
         // move in current direction
