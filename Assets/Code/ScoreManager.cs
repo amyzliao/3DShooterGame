@@ -14,15 +14,11 @@ namespace Code
         // Start is called before the first frame update
         private void Start()
         {
+            _currentScore = 0;
             _scoreDisplay = GetComponentInChildren<TMP_Text>();
             UpdateScoreDisplay();
             _singleton = this;
             LevelManager.Register(this);
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
         }
 
         public void Reset()
