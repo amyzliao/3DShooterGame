@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 535710282544566116}
   - component: {fileID: 535710282526484680}
   - component: {fileID: 535710282527567728}
-  - component: {fileID: 4843121686931477480}
   - component: {fileID: 4061701169267106083}
   - component: {fileID: 6655376273166343745}
+  - component: {fileID: 622428514147056842}
   m_Layer: 0
   m_Name: StationaryTree
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 535710282529548282}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 9.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -97,27 +97,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4843121686931477480
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 535710282529548282}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 8.655672, y: 12.977297, z: 10.772637}
-  m_Center: {x: 0.8835465, y: 6.4886484, z: 1.1047206}
 --- !u!54 &4061701169267106083
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -157,3 +136,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d837ac677a7b4640a61ac783246f68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &622428514147056842
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535710282529548282}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.3863187
+  m_Height: 12.977297
+  m_Direction: 1
+  m_Center: {x: 0.8835465, y: 6.4886484, z: 1.1047206}
