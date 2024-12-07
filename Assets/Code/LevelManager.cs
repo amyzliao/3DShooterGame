@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using Code;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
+
 
 public class LevelManager : MonoBehaviour
 {
@@ -24,6 +27,11 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             _singleton.ResetGameInternal();
+        // if no more enemies, proceed to next level
+        if (FindObjectsOfType<EnemyTree>().Length == 0)
+        {
+            LoadNextLevel();
+        }
     }
 
     public static bool Register(ICanBeReset obj)
@@ -46,5 +54,20 @@ public class LevelManager : MonoBehaviour
     {
         foreach (var obj in _objectsToReset)
             obj.Reset();
+    }
+
+    public void LoadNextLevel()
+    {
+        int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextLevelIndex = currentLevelIndex + 1;
+
+        if (nextLevelIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextLevelIndex);
+        }
+        else
+        {
+            ResetGame();
+        }
     }
 }

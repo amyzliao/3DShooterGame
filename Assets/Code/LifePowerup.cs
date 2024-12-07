@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Code;
 
-public class SpeedPowerup : MonoBehaviour
+public class LifePowerup : MonoBehaviour
 {
-    public float SpeedMultiplier = 2f;
-    public float PowerUpDuration = 5f;
+    private LivesManager livesManager;
+
+    private void Start()
+    {
+        if (livesManager == null)
+        {
+            livesManager = FindObjectOfType<LivesManager>();
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -14,7 +22,7 @@ public class SpeedPowerup : MonoBehaviour
             var playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
             if (playerMovement != null)
             {
-                playerMovement.ActivateSpeedPowerUp(SpeedMultiplier, PowerUpDuration);
+                LivesManager.AddToLives(1);
                 Destroy(gameObject);
             }
         }
