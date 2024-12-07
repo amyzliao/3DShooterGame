@@ -39,11 +39,6 @@ public class Bullet : MonoBehaviour
   /// <param name="other"></param>
   void OnCollisionEnter(Collision other)
   {
-    // collide with player, do nothing
-    if (other.gameObject.TryGetComponent<Player>(out _))
-    {
-      return;
-    }
     // collide with enemies, add to score and disappear
     if (other.gameObject.TryGetComponent<EnemyTree>(out _))
     {

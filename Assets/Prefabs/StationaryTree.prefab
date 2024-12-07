@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6655376273166343745}
   - component: {fileID: 622428514147056842}
   - component: {fileID: 2908120929734663919}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StationaryTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
