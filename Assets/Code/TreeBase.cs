@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class TreeBase : MonoBehaviour
@@ -8,7 +6,18 @@ public abstract class TreeBase : MonoBehaviour
     private AudioSource _audioSource;
     private Transform _player;
 
-    private void Start() {
+    private void Start()
+    {
+        SetUpAudio();
+    }
+
+    private void Update()
+    {
+        TreeUpdate();
+    }
+
+    protected void SetUpAudio()
+    {
         _audioSource = GetComponent<AudioSource>();
         _player = GameObject.FindWithTag("Player").transform;
 
@@ -19,25 +28,20 @@ public abstract class TreeBase : MonoBehaviour
         }
     }
 
-    protected void Update() {
-        if (_player == null || _audioSource == null)
-            return;
+    protected void TreeUpdate()
+    {
+        if (_player == null || _audioSource == null) return;
 
-        float distanceToPlayer = Vector3.Distance(transform.position, _player.position);
+        var distanceToPlayer = Vector3.Distance(transform.position, _player.position);
+
 
         if (distanceToPlayer <= SoundProximityRadius)
         {
-            if (!_audioSource.isPlaying)
-            {
-                _audioSource.Play();
-            }
+            if (!_audioSource.isPlaying) _audioSource.Play();
         }
         else
         {
-            if (_audioSource.isPlaying)
-            {
-                _audioSource.Stop();
-            }
+            if (_audioSource.isPlaying) _audioSource.Stop();
         }
     }
 
