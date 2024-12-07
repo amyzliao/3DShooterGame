@@ -32,7 +32,7 @@ namespace Code
             UpdateScoreDisplay();
         }
 
-        public static void IncrementScore(int amount)
+        public static void AddToScore(int amount)
         {
             _singleton.IncrementScoreInternal(amount);
         }
