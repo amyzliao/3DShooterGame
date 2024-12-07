@@ -36,26 +36,26 @@ public class Bullet : MonoBehaviour
   /// <summary>
   /// Handle bullet collissions
   /// </summary>
-  /// <param name="collision"></param>
-  void OnCollisionEnter(Collision collision)
+  /// <param name="other"></param>
+  void OnTriggerEnter(Collider other)
   {
     // collide with player, that's fine
-    if (collision.gameObject.TryGetComponent<Player>(out _))
+    if (other.gameObject.TryGetComponent<Player>(out _))
     {
       return;
     }
     // collide with enemies, add to score and disappear
-    else if (collision.gameObject.TryGetComponent<EnemyTree>(out _))
+    else if (other.gameObject.TryGetComponent<EnemyTree>(out _))
     {
       ScoreManager.AddToScore(1);
-      Destroy(collision.gameObject);
+      Destroy(other.gameObject);
       Destroy(gameObject);
     }
     // collide with good trees, sub from score and disappear
-    else if (collision.gameObject.TryGetComponent<TreeBase>(out _))
+    else if (other.gameObject.TryGetComponent<TreeBase>(out _))
     {
       ScoreManager.AddToScore(-1);
-      Destroy(collision.gameObject);
+      Destroy(other.gameObject);
       Destroy(gameObject);
     }
     else
