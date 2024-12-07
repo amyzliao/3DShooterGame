@@ -5,6 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   /// <summary>
+  /// The camera attached to the player
+  /// </summary>
+  private Transform CameraTransform;
+
+  /// <summary>
   /// Fields for firing bullets
   /// </summary>
   public GameObject BulletPrefab;
@@ -16,6 +21,7 @@ public class Player : MonoBehaviour
   void Start()
   {
     nextFire = 0f;
+    CameraTransform = transform.GetChild(0).transform;
   }
 
   void Update()
@@ -40,9 +46,8 @@ public class Player : MonoBehaviour
   void FireBullet()
   {
     var verticalOffset = new Vector3(0, 0.5f, 0);
-    var bullet = Instantiate(BulletPrefab, transform.position + verticalOffset + transform.forward, Quaternion.identity);
-    var orientation = gameObject.transform.GetChild(0).transform.rotation;
-    bullet.transform.rotation = orientation;
+    var bullet = Instantiate(BulletPrefab, transform.position + verticalOffset, Quaternion.identity);
+    bullet.transform.rotation = CameraTransform.rotation;
     bullet.GetComponent<Rigidbody>().velocity = BulletVelocity * bullet.transform.forward;
   }
 

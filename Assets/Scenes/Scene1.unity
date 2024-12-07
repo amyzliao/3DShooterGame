@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 589818645}
   - component: {fileID: 589818644}
   - component: {fileID: 589818643}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1342,6 +1342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SciFiGunLightBlue
       objectReference: {fileID: 0}
+    - target: {fileID: 134812, guid: 3c81b162a1af44348b8994f7040514d4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 449102, guid: 3c81b162a1af44348b8994f7040514d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.2
@@ -2006,7 +2010,7 @@ GameObject:
   - component: {fileID: 2011721856}
   - component: {fileID: 2011721861}
   - component: {fileID: 2011721862}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
