@@ -34,7 +34,10 @@ public class TreeManager : MonoBehaviour
     {
         foreach (var tree in _trees)
         {
-            tree.UpdateBehavior();
+            if (tree)
+            {
+                tree.UpdateBehavior();
+            }
         }
     }
 
@@ -43,7 +46,7 @@ public class TreeManager : MonoBehaviour
         Vector3 spawnPosition;
 
         // ensure the tree spawns a certain distance away from the player
-        int maxAttempts = 100; 
+        int maxAttempts = 100;
         int attempts = 0;
         do
         {
@@ -57,7 +60,6 @@ public class TreeManager : MonoBehaviour
 
         if (attempts >= maxAttempts)
         {
-            Debug.LogWarning("Could not find a suitable spawn location for the tree.");
             return;
         }
 

@@ -15,7 +15,6 @@ namespace Code
         private void Start()
         {
             _scoreDisplay = GetComponentInChildren<TMP_Text>();
-            Debug.Log(_scoreDisplay);
             UpdateScoreDisplay();
             _singleton = this;
             LevelManager.Register(this);

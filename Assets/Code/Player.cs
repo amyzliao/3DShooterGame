@@ -18,11 +18,7 @@ public class Player : MonoBehaviour
     nextFire = 0f;
   }
 
-  /// <summary>
-  /// Called by Uniity every 1/50th of a second, regardless of the graphics card's frame rate
-  /// </summary>
-  // ReSharper disable once UnusedMember.Local
-  void FixedUpdate()
+  void Update()
   {
     MaybeFire();
   }
@@ -44,7 +40,7 @@ public class Player : MonoBehaviour
   void FireBullet()
   {
     var verticalOffset = new Vector3(0, 0.5f, 0);
-    var bullet = Instantiate(BulletPrefab, transform.position + verticalOffset, Quaternion.identity);
+    var bullet = Instantiate(BulletPrefab, transform.position + verticalOffset + transform.forward, Quaternion.identity);
     var orientation = gameObject.transform.GetChild(0).transform.rotation;
     bullet.transform.rotation = orientation;
     bullet.GetComponent<Rigidbody>().velocity = BulletVelocity * bullet.transform.forward;

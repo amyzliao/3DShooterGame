@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour
   /// Handle bullet collissions
   /// </summary>
   /// <param name="other"></param>
-  void OnTriggerEnter(Collider other)
+  void OnCollisionEnter(Collision other)
   {
     // collide with player, that's fine
     if (other.gameObject.TryGetComponent<Player>(out _))
