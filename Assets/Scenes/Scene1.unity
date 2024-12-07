@@ -478,7 +478,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -559,6 +559,7 @@ GameObject:
   - component: {fileID: 2011721857}
   - component: {fileID: 2011721856}
   - component: {fileID: 2011721861}
+  - component: {fileID: 2011721862}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -697,6 +698,21 @@ MonoBehaviour:
   MoveAcceleration: 150
   JumpAcceleration: 1200
   MaxLinearVelocity: 15
+--- !u!114 &2011721862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011721855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f761b155dc0e4a6f933a1117829ee53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 6717595789439390266, guid: 8af89c8f070374babba30a565574bb9c, type: 3}
+  FireInterval: 0.1
+  BulletVelocity: 100
 --- !u!1 &2058468574
 GameObject:
   m_ObjectHideFlags: 0
