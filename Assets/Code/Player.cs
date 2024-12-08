@@ -9,10 +9,9 @@ public class Player : MonoBehaviour
 
     public float FireInterval;
     public float BulletVelocity = 100f;
-    public AudioClip FiringSound;
-    private AudioSource _firingAudioSource;
-    private Rigidbody _playerRb;
+    private FiringSound _firingSound;
 
+    private Rigidbody _playerRb;
     private AudioSource _walkingAudioSource;
 
     /// <summary>
@@ -29,7 +28,7 @@ public class Player : MonoBehaviour
         CameraTransform = transform.GetChild(0).transform;
         _playerRb = GetComponent<Rigidbody>();
         _walkingAudioSource = GetComponent<AudioSource>();
-        _firingAudioSource = GetComponentInChildren<AudioSource>();
+        _firingSound = GetComponentInChildren<FiringSound>();
     }
 
     private void Update()
@@ -62,7 +61,7 @@ public class Player : MonoBehaviour
 
     private void FireBullet()
     {
-        _firingAudioSource.PlayOneShot(FiringSound);
+        _firingSound.PlaySound();
         var verticalOffset = new Vector3(0, 0.5f, 0);
         var bullet = Instantiate(BulletPrefab, transform.position + verticalOffset, Quaternion.identity);
         bullet.transform.rotation = CameraTransform.rotation;

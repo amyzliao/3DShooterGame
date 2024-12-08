@@ -4,22 +4,27 @@ using UnityEngine;
 public class EnemyTree : TreeBase
 {
     /// <summary>
-    /// Movement & position related
+    ///     Movement & position related
     /// </summary>
     public float MoveSpeed = 2f;
+
     public float DirectionChangeInterval = 3f; // time before changing direction
     public float MaxWanderRadius = 10f; // limit how far tree can wander from spawn point
+
+    /// <summary>
+    ///     Firing related
+    /// </summary>
+    public GameObject SeedPrefab;
+
+    public float FireInterval;
+    public float SeedVelocity;
     private Vector3 _currentDirection;
+    private FiringSound _firingSound;
 
     private Vector3 _spawnPosition;
 
-    /// <summary>
-    /// Firing related
-    /// </summary>
-    public GameObject SeedPrefab;
-    public float FireInterval;
-    public float SeedVelocity;
     private float nextFire;
+
     // transform of the player object, used to make seeds travel towards player
     private Transform player;
 
@@ -28,6 +33,7 @@ public class EnemyTree : TreeBase
         SetUpAudio();
         _spawnPosition = transform.position; // initial position
         player = FindObjectOfType<Player>().transform;
+        _firingSound = GetComponentInChildren<FiringSound>();
         nextFire = Time.time + FireInterval;
         StartCoroutine(ChangeDirectionRoutine());
     }
@@ -46,11 +52,12 @@ public class EnemyTree : TreeBase
     }
 
     /// <summary>
-    /// Fire a seed in the direction of the player
+    ///     Fire a seed in the direction of the player
     /// </summary>
     private void Fire()
     {
-        var playerDirection = (player.position - transform.position);
+        _firingSound.PlaySound();
+        var playerDirection = player.position - transform.position;
         playerDirection.y = 0;
         playerDirection.Normalize();
         var verticalOffset = new Vector3(0, 1.5f, 0);
