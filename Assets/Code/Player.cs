@@ -2,16 +2,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-  /// <summary>
-  ///     Fields for firing bullets
-  /// </summary>
-  public GameObject BulletPrefab;
+    /// <summary>
+    ///     Fields for firing bullets
+    /// </summary>
+    public GameObject BulletPrefab;
 
     public float FireInterval;
     public float BulletVelocity = 100f;
-
-    private AudioSource _audioSource;
+    public AudioClip FiringSound;
+    private AudioSource _firingAudioSource;
     private Rigidbody _playerRb;
+
+    private AudioSource _walkingAudioSource;
 
     /// <summary>
     ///     The camera attached to the player
@@ -26,7 +28,8 @@ public class Player : MonoBehaviour
         nextFire = 0f;
         CameraTransform = transform.GetChild(0).transform;
         _playerRb = GetComponent<Rigidbody>();
-        _audioSource = GetComponent<AudioSource>();
+        _walkingAudioSource = GetComponent<AudioSource>();
+        _firingAudioSource = GetComponentInChildren<AudioSource>();
     }
 
     private void Update()
@@ -37,10 +40,10 @@ public class Player : MonoBehaviour
 
     private void PlayWalkingSound()
     {
-        if (_playerRb.velocity != Vector3.zero && !_audioSource.isPlaying)
-            _audioSource.Play();
-        else if (_playerRb.velocity == Vector3.zero && _audioSource.isPlaying)
-            _audioSource.Stop();
+        if (_playerRb.velocity != Vector3.zero && !_walkingAudioSource.isPlaying)
+            _walkingAudioSource.Play();
+        else if (_playerRb.velocity == Vector3.zero && _walkingAudioSource.isPlaying)
+            _walkingAudioSource.Stop();
     }
 
     /// <summary>
@@ -59,6 +62,7 @@ public class Player : MonoBehaviour
 
     private void FireBullet()
     {
+        _firingAudioSource.PlayOneShot(FiringSound);
         var verticalOffset = new Vector3(0, 0.5f, 0);
         var bullet = Instantiate(BulletPrefab, transform.position + verticalOffset, Quaternion.identity);
         bullet.transform.rotation = CameraTransform.rotation;
