@@ -1,0 +1,15 @@
+
+Dirt Texture: https://polyhaven.com/a/sandy_gravel_02
+
+Gun Model and Texture: https://assetstore.unity.com/packages/3d/props/guns/sci-fi-gun-light-87916
+
+Tree Model and Texture: https://assetstore.unity.com/packages/3d/vegetation/trees/realistic-tree-12-63474 
+
+Powerup Models and Textures: https://assetstore.unity.com/packages/3d/props/low-poly-powerups-212079 
+
+Tree Sounds: https://mixkit.co/free-sound-effects/ambience/ 
+
+Walking Sound:
+https://pixabay.com/sound-effects/walking-sound-effect-272246/
+
+Seed texture: Amy drew it
