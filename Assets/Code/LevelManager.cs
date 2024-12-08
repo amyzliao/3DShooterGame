@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     private static LevelManager _singleton;
 
     private List<ICanBeReset> _objectsToReset;
+    public GameObject gameOverScreen;
 
     private void Awake()
     {
@@ -20,6 +21,10 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -31,6 +36,10 @@ public class LevelManager : MonoBehaviour
         if (FindObjectsOfType<EnemyTree>().Length == 0)
         {
             LoadNextLevel();
+        }
+        if (LivesManager.GetLives() <= 0)
+        {
+            StartCoroutine(GameOver());
         }
     }
 
@@ -69,5 +78,20 @@ public class LevelManager : MonoBehaviour
         {
             ResetGame();
         }
+    }
+
+    private IEnumerator GameOver()
+    {
+        // Display the Game Over screen
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.SetActive(true);
+        }
+
+        // Wait for the specified delay
+        yield return new WaitForSeconds(2f);
+
+        // Reload the current level
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Code
 {
@@ -32,6 +33,11 @@ namespace Code
             _singleton.IncrementLivesInternal(amount);
         }
 
+        public static int GetLives()
+        {
+            return _singleton._currentLives;
+        }
+
         private void IncrementLivesInternal(int amount)
         {
             _currentLives += amount;
@@ -42,5 +48,6 @@ namespace Code
         {
             _scoreDisplay.text = $"Lives: {_currentLives}";
         }
+
     }
 }
