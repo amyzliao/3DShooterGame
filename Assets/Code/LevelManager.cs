@@ -1,17 +1,16 @@
+using System.Collections;
 using System.Collections.Generic;
 using Code;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
-
 
 public class LevelManager : MonoBehaviour
 {
     private static LevelManager _singleton;
-
-    private List<ICanBeReset> _objectsToReset;
     public GameObject gameOverScreen;
     public GameObject youWinScreen;
+
+    private List<ICanBeReset> _objectsToReset;
 
     private void Awake()
     {
@@ -22,14 +21,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        if (gameOverScreen != null)
-        {
-            gameOverScreen.SetActive(false);
-        }
-        if (youWinScreen != null)
-        {
-            youWinScreen.SetActive(false);
-        }
+        if (gameOverScreen != null) gameOverScreen.SetActive(false);
+        if (youWinScreen != null) youWinScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,18 +34,12 @@ public class LevelManager : MonoBehaviour
         if (FindObjectsOfType<EnemyTree>().Length == 0)
         {
             if (IsLastLevel())
-            {
                 StartCoroutine(ShowYouWinScreen());
-            }
             else
-            {
                 LoadNextLevel();
-            }
         }
-        if (LivesManager.GetLives() <= 0)
-        {
-            StartCoroutine(GameOver());
-        }
+
+        if (LivesManager.GetLives() <= 0) StartCoroutine(GameOverDelayed());
     }
 
     public static bool Register(ICanBeReset obj)
@@ -64,6 +51,16 @@ public class LevelManager : MonoBehaviour
     {
         _objectsToReset.Add(obj);
         return true;
+    }
+
+    public static void GameOver()
+    {
+        _singleton.GameOverInternal();
+    }
+
+    private void GameOverInternal()
+    {
+        StartCoroutine(GameOverDelayed());
     }
 
     public static void ResetGame()
@@ -79,26 +76,19 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextLevelIndex = currentLevelIndex + 1;
+        var currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+        var nextLevelIndex = currentLevelIndex + 1;
 
         if (nextLevelIndex < SceneManager.sceneCountInBuildSettings)
-        {
             SceneManager.LoadScene(nextLevelIndex);
-        }
         else
-        {
             ResetGame();
-        }
     }
 
-    private IEnumerator GameOver()
+    private IEnumerator GameOverDelayed()
     {
         // display the Game Over screen
-        if (gameOverScreen != null)
-        {
-            gameOverScreen.SetActive(true);
-        }
+        if (gameOverScreen != null) gameOverScreen.SetActive(true);
 
         // wait for the specified delay
         yield return new WaitForSeconds(2f);
@@ -110,10 +100,7 @@ public class LevelManager : MonoBehaviour
     private IEnumerator ShowYouWinScreen()
     {
         // display the You Win screen
-        if (youWinScreen != null)
-        {
-            youWinScreen.SetActive(true);
-        }
+        if (youWinScreen != null) youWinScreen.SetActive(true);
 
         // wait for the specified delay
         yield return new WaitForSeconds(2f);

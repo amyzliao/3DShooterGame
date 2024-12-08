@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (transform.position.y < -1.0f)
+            LevelManager.GameOver();
+
         MaybeFire();
         PlayWalkingSound();
     }
