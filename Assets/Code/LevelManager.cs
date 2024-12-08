@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
 
     private List<ICanBeReset> _objectsToReset;
     public GameObject gameOverScreen;
+    public GameObject youWinScreen;
 
     private void Awake()
     {
@@ -25,6 +26,10 @@ public class LevelManager : MonoBehaviour
         {
             gameOverScreen.SetActive(false);
         }
+        if (youWinScreen != null)
+        {
+            youWinScreen.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -32,10 +37,17 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             _singleton.ResetGameInternal();
-        // if no more enemies, proceed to next level
+        // if no more enemies, proceed to next level - if already on last level, display you win screen
         if (FindObjectsOfType<EnemyTree>().Length == 0)
         {
-            LoadNextLevel();
+            if (IsLastLevel())
+            {
+                StartCoroutine(ShowYouWinScreen());
+            }
+            else
+            {
+                LoadNextLevel();
+            }
         }
         if (LivesManager.GetLives() <= 0)
         {
@@ -82,16 +94,36 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator GameOver()
     {
-        // Display the Game Over screen
+        // display the Game Over screen
         if (gameOverScreen != null)
         {
             gameOverScreen.SetActive(true);
         }
 
-        // Wait for the specified delay
+        // wait for the specified delay
         yield return new WaitForSeconds(2f);
 
-        // Reload the current level
+        // reload the current level
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private IEnumerator ShowYouWinScreen()
+    {
+        // display the You Win screen
+        if (youWinScreen != null)
+        {
+            youWinScreen.SetActive(true);
+        }
+
+        // wait for the specified delay
+        yield return new WaitForSeconds(2f);
+
+        // reload the first level
+        SceneManager.LoadScene(0);
+    }
+
+    private bool IsLastLevel()
+    {
+        return SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1;
     }
 }
